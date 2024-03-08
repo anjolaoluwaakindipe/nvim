@@ -70,9 +70,11 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 	--Lspsaga
-	keymap(bufnr, "n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+	keymap(bufnr, "n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
+	keymap(bufnr, "n", "gD", "<cmd>Lspsaga goto_definition<CR>", opts) -- got to definition
+	keymap(bufnr, "n", "gT", "<cmd>Lspsaga goto_type_definition<CR>", opts) -- got to type definition
 	keymap(bufnr, "n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
+	keymap(bufnr, "n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", opts) -- see type definition and make edits in window
 	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
 	keymap(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 	keymap(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
@@ -81,10 +83,15 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 	keymap(bufnr, "n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
-	keymap(bufnr, "n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+	keymap(bufnr, "n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts) -- see outline on right hand side
 end
 
 M.on_attach = function(client, bufnr)
+	-- if client.server_capabilities.inlayHintProvider then
+	-- vim.lsp.inlay_hint.enable(bufnr, true)
+	-- vim.lsp.buf.inlay_hint(bufnr, true)
+	-- end
+
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end

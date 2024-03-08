@@ -67,6 +67,18 @@ return packer.startup(function(use)
 	use({ "nvim-tree/nvim-web-devicons" })
 	use({ "nvim-tree/nvim-tree.lua" })
 
+	-- nvim lsp file operations
+	use({
+		"antosha417/nvim-lsp-file-operations",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-tree.lua",
+		},
+		config = function()
+			require("lsp-file-operations").setup()
+		end,
+	})
+
 	-- Tree sitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -75,6 +87,7 @@ return packer.startup(function(use)
 			ts_update()
 		end,
 	})
+	use("nvim-treesitter/nvim-tree-docs")
 
 	-- gitsigns
 	use("lewis6991/gitsigns.nvim")
@@ -86,6 +99,7 @@ return packer.startup(function(use)
 	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
 	use({ "RRethy/vim-illuminate" })
 	use({ "onsails/lspkind.nvim" })
+	use({ "lvimuser/lsp-inlayhints.nvim" })
 
 	--telescope
 	use({
@@ -101,6 +115,10 @@ return packer.startup(function(use)
 	-- comments
 	use({
 		"numToStr/Comment.nvim",
+	})
+
+	use({
+		"JoosepAlviste/nvim-ts-context-commentstring",
 	})
 
 	-- lualine (status line)
@@ -180,6 +198,29 @@ return packer.startup(function(use)
 			require("typescript-tools").setup({})
 		end,
 	})
+
+	-- cmake
+	use("Civitasv/cmake-tools.nvim")
+
+	-- harpoon
+	use({ "ThePrimeagen/harpoon", requires = {
+		"nvim-telescope/telescope.nvim",
+	}, branch = "harpoon2" })
+
+	-- surround text
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	})
+
+	-- rust
+	-- use("simrat39/rust-tools.nvim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

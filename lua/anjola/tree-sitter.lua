@@ -49,4 +49,7 @@ treesitter.setup({
 	autopairs = {
 		enable = true,
 	},
+	tree_docs = {
+		enable = true,
+	},
 })

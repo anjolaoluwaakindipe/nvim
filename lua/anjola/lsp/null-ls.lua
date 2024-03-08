@@ -15,7 +15,12 @@ null_ls.setup({
 		formatting.gofumpt, -- go
 		formatting.rustfmt, -- rust
 		formatting.csharpier, -- C#
-		diagnostics.eslint_d, -- javascript typescript
+		formatting.clang_format, --c++
+		diagnostics.eslint_d.with({ -- js/ts linter
+			condition = function(utils)
+				return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+			end,
+		}), -- javascript typescript
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

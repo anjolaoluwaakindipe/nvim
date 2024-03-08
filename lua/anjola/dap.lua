@@ -26,6 +26,7 @@ require("mason-nvim-dap").setup({
 		"delve",
 		"coreclr",
 		"node2",
+		"codelldb",
 	},
 	automatic_installation = false,
 })
@@ -56,7 +57,7 @@ require("dap-go").setup({
 		{
 			-- Must be "go" or it will be ignored by the plugin
 			type = "go",
-			name = "Attach remote",
+			name = "Attach remote Golang",
 			mode = "remote",
 			request = "attach",
 		},
@@ -108,14 +109,14 @@ for _, language in ipairs({ "typescript", "javascript" }) do
 		{
 			type = "pwa-node",
 			request = "attach",
-			name = "Attach",
+			name = "Attach Typescript/Javascript (node)",
 			processId = require("dap.utils").pick_process,
 			cwd = "${workspaceFolder}",
 		},
 		{
 			type = "pwa-node",
 			request = "launch",
-			name = "Debug Jest Tests",
+			name = "Debug Jest Tests Typescript/Javascript (jest)",
 			-- trace = true, -- include debugger info
 			runtimeExecutable = "node",
 			runtimeArgs = {
@@ -129,3 +130,17 @@ for _, language in ipairs({ "typescript", "javascript" }) do
 		},
 	}
 end
+
+-- cpp
+dap.configurations.cpp = {
+	{
+		name = "Launch file",
+		type = "codelldb",
+		request = "launch",
+		program = function()
+			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+		end,
+		cwd = "${workspaceFolder}",
+		stopOnEntry = false,
+	},
+}

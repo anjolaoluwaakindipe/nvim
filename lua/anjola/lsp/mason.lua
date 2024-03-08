@@ -9,7 +9,7 @@ if not status_ok then
 end
 
 mason.setup({
-ui = {
+	ui = {
 		border = "none",
 		icons = {
 			package_installed = "◍",
@@ -22,33 +22,33 @@ ui = {
 })
 
 local lsp_servers = {
-		"tsserver",
-		"html",
-		"cssls",
-		"tailwindcss",
-		"lua_ls",
-		"emmet_ls",
-		"omnisharp",
-		"omnisharp_mono",
-		"csharp_ls",
-		"gopls",
-		"golangci_lint_ls",
-		"jdtls",
-		"pyright",
-		"rust_analyzer",
-		"svelte",
-		"prismals",
-		"clangd",
-    "jsonls",
-	}
+	"tsserver",
+	"html",
+	"cssls",
+	"tailwindcss",
+	"lua_ls",
+	"emmet_ls",
+	"omnisharp",
+	"omnisharp_mono",
+	"csharp_ls",
+	"gopls",
+	"jdtls",
+	"pyright",
+	"rust_analyzer",
+	"svelte",
+	"prismals",
+	"clangd",
+	"jsonls",
+	"cmake",
+	"templ",
+}
 
 mason_lspconfig.setup({
-  -- list of servers for mason to install
+	-- list of servers for mason to install
 	ensure_installed = lsp_servers,
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed)
 })
-
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
