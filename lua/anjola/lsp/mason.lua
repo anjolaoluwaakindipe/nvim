@@ -8,6 +8,21 @@ if not status_ok then
 	return
 end
 
+require("mason-null-ls").setup({
+	ensure_installed = {
+		-- Opt to list sources here, when available in mason.
+		"clang-format",
+		"csharpier",
+		"gleam",
+		"gofumpt",
+		"prettier",
+		"stylua",
+		"gleam",
+	},
+	automatic_installation = false,
+	handlers = {},
+})
+
 mason.setup({
 	ui = {
 		border = "none",
@@ -41,6 +56,8 @@ local lsp_servers = {
 	"jsonls",
 	"cmake",
 	"templ",
+	"gleam",
+	"htmx",
 }
 
 mason_lspconfig.setup({

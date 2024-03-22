@@ -72,6 +72,10 @@ vim.keymap.set("n", "<leader>hp", function()
 	harpoon:list():next()
 end)
 
+vim.keymap.set("n", "<leader>hd", function()
+	harpoon:list():remove()
+end)
+
 harpoon:extend({
 	UI_CREATE = function(cx)
 		vim.keymap.set("n", "<C-v>", function()
