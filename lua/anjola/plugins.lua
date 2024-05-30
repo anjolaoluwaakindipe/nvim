@@ -103,7 +103,14 @@ return packer.startup(function(use)
 	use({ "neovim/nvim-lspconfig" })
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+	-- use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+	use({
+		"nvimdev/lspsaga.nvim",
+		after = "nvim-lspconfig",
+		config = function()
+			require("lspsaga").setup({})
+		end,
+	})
 	use({ "RRethy/vim-illuminate" })
 	use({ "onsails/lspkind.nvim" })
 	use({ "lvimuser/lsp-inlayhints.nvim" })
@@ -146,7 +153,7 @@ return packer.startup(function(use)
 
 	-- dap
 	use({ "mfussenegger/nvim-dap", requires = { "leoluz/nvim-dap-go" } })
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
 	use({ "jay-babu/mason-nvim-dap.nvim" })
 	use({ "theHamsta/nvim-dap-virtual-text" })
 	use({ "nvim-telescope/telescope-dap.nvim" })
@@ -168,8 +175,10 @@ return packer.startup(function(use)
 	use({
 		"nvim-neotest/neotest",
 		requires = {
+			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-python",
 			"nvim-neotest/neotest-go",
 			"nvim-neotest/neotest-jest",
@@ -225,25 +234,31 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- language specific
+	-- c#
+	use("Hoffs/omnisharp-extended-lsp.nvim")
+	-- use("OmniSharp/omnisharp-vim")
+	-- use("Decodetalkers/csharpls-extended-lsp.nvim")
+
 	-- codieum
-	use({
-		"Exafunction/codeium.vim",
-		config = function()
-			-- Change '<C-g>' here to any keycode you like.
-			vim.keymap.set("i", "<C-g>", function()
-				return vim.fn["codeium#Accept"]()
-			end, { expr = true, silent = true })
-			vim.keymap.set("i", "<c-;>", function()
-				return vim.fn["codeium#CycleCompletions"](1)
-			end, { expr = true, silent = true })
-			vim.keymap.set("i", "<c-,>", function()
-				return vim.fn["codeium#CycleCompletions"](-1)
-			end, { expr = true, silent = true })
-			vim.keymap.set("i", "<c-x>", function()
-				return vim.fn["codeium#Clear"]()
-			end, { expr = true, silent = true })
-		end,
-	})
+	-- use({
+	-- 	"Exafunction/codeium.vim",
+	-- 	config = function()
+	-- 		-- Change '<C-g>' here to any keycode you like.
+	-- 		vim.keymap.set("i", "<C-g>", function()
+	-- 			return vim.fn["codeium#Accept"]()
+	-- 		end, { expr = true, silent = true })
+	-- 		vim.keymap.set("i", "<c-;>", function()
+	-- 			return vim.fn["codeium#CycleCompletions"](1)
+	-- 		end, { expr = true, silent = true })
+	-- 		vim.keymap.set("i", "<c-,>", function()
+	-- 			return vim.fn["codeium#CycleCompletions"](-1)
+	-- 		end, { expr = true, silent = true })
+	-- 		vim.keymap.set("i", "<c-x>", function()
+	-- 			return vim.fn["codeium#Clear"]()
+	-- 		end, { expr = true, silent = true })
+	-- 	end,
+	-- })
 	-- rust
 	-- use("simrat39/rust-tools.nvim")
 

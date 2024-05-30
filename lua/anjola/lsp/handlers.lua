@@ -53,12 +53,13 @@ end
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	local keymap = vim.api.nvim_buf_set_keymap
-	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	keymap(bufnr, "n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	keymap(bufnr, "n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	keymap(bufnr, "n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	keymap(bufnr, "n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	keymap(bufnr, "n", "<leader>gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
 	keymap(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
@@ -70,19 +71,19 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 	--Lspsaga
-	keymap(bufnr, "n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
-	keymap(bufnr, "n", "gD", "<cmd>Lspsaga goto_definition<CR>", opts) -- got to definition
-	keymap(bufnr, "n", "gT", "<cmd>Lspsaga goto_type_definition<CR>", opts) -- got to type definition
-	keymap(bufnr, "n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-	keymap(bufnr, "n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", opts) -- see type definition and make edits in window
-	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
+	-- keymap(bufnr, "n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
+	-- keymap(bufnr, "n", "gD", "<cmd>Lspsaga goto_definition<CR>", opts) -- got to definition
+	-- keymap(bufnr, "n", "gT", "<cmd>Lspsaga goto_type_definition<CR>", opts) -- got to type definition
+	keymap(bufnr, "n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
+	keymap(bufnr, "n", "gP", "<cmd>Lspsaga peek_type_definition<CR>", opts) -- see type definition and make edits in window
+	-- keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
 	keymap(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 	keymap(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 	keymap(bufnr, "n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
 	keymap(bufnr, "n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
 	keymap(bufnr, "n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 	keymap(bufnr, "n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-	keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
+	-- keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 	keymap(bufnr, "n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts) -- see outline on right hand side
 end
 

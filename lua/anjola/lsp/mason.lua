@@ -13,11 +13,9 @@ require("mason-null-ls").setup({
 		-- Opt to list sources here, when available in mason.
 		"clang-format",
 		"csharpier",
-		"gleam",
 		"gofumpt",
 		"prettier",
 		"stylua",
-		"gleam",
 	},
 	automatic_installation = false,
 	handlers = {},
@@ -44,8 +42,9 @@ local lsp_servers = {
 	"lua_ls",
 	"emmet_ls",
 	"omnisharp",
-	"omnisharp_mono",
-	"csharp_ls",
+	-- "csharp_ls",
+	"zls",
+	"eslint",
 	"gopls",
 	"jdtls",
 	"pyright",
@@ -56,7 +55,6 @@ local lsp_servers = {
 	"jsonls",
 	"cmake",
 	"templ",
-	"gleam",
 	"htmx",
 }
 

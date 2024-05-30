@@ -78,3 +78,5 @@ nvim_tree.setup({
 		side = "left",
 	},
 })
+
+require("nvim-treesitter.configs").setup({})

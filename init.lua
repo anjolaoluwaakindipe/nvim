@@ -22,3 +22,6 @@ require("anjola.cmake-tools")
 require("anjola.surround")
 require("anjola.harpoon")
 -- require("anjola.rust_tools")
+
+-- vim.cmd("let g:OmniSharp_server_use_net6 = 1 ")
+-- vim.cmd("let g:OmniSharp_server_use_mono = 1")
