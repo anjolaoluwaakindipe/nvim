@@ -2,24 +2,54 @@ return {
 	"lewis6991/gitsigns.nvim",
 	opts = {
 
+		signcolumn = true,
+		_signs_staged_enable = true, -- experimental
+
 		signs = {
-			add = { hl = "GitSignsAdd", text = " ", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-			change = { hl = "GitSignsChange", text = " ", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-			delete = { hl = "GitSignsDelete", text = " ", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-			topdelete = {
-				hl = "GitSignsDelete",
-				text = "󱅁 ",
-				numhl = "GitSignsDeleteNr",
-				linehl = "GitSignsDeleteLn",
-			},
+			add = { hl = "GitSignsAdd", text = "┃", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+			change = { hl = "GitSignsChange", text = "┃", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+			delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+			topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
 			changedelete = {
 				hl = "GitSignsChange",
-				text = "󰍷 ",
+				text = "┃",
 				numhl = "GitSignsChangeNr",
 				linehl = "GitSignsChangeLn",
 			},
 		},
-		signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+		_signs_staged = {
+			add = {
+				hl = "GitSignsStagedAdd",
+				text = "┋ ",
+				numhl = "GitSignsStagedAddNr",
+				linehl = "GitSignsStagedAddLn",
+			},
+			change = {
+				hl = "GitSignsStagedChange",
+				text = "┋ ",
+				numhl = "GitSignsStagedChangeNr",
+				linehl = "GitSignsStagedChangeLn",
+			},
+			delete = {
+				hl = "GitSignsStagedDelete",
+				text = "﹍",
+				numhl = "GitSignsStagedDeleteNr",
+				linehl = "GitSignsStagedDeleteLn",
+			},
+			topdelete = {
+				hl = "GitSignsStagedDelete",
+				text = "﹉",
+				numhl = "GitSignsStagedDeleteNr",
+				linehl = "GitSignsStagedDeleteLn",
+			},
+			changedelete = {
+				hl = "GitSignsStagedChange",
+				text = "┋ ",
+				numhl = "GitSignsStagedChangeNr",
+				linehl = "GitSignsStagedChangeLn",
+			},
+		},
+		igncolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 		numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
 		linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 		word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`

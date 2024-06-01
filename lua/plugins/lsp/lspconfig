@@ -141,6 +141,12 @@ return {
 				})
 			end,
 
+			["omnisharp"] = function()
+				lspconfig["omnisharp"].setup({
+					capabilities = capabilities,
+				})
+			end,
+
 			["gopls"] = function()
 				lspconfig["gopls"].setup({
 					capabilities = capabilities,
