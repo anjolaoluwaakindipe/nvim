@@ -39,7 +39,8 @@ return {
 			"pyright",
 			"rust_analyzer",
 			"svelte",
-			"prismals",
+			-- "prismals",
+			-- "gopls",
 			"clangd",
 			"jsonls",
 			"cmake",
@@ -58,7 +59,6 @@ return {
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"eslint",
-				"gopls",
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
 				"isort", -- python formatter
