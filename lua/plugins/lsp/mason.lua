@@ -35,8 +35,6 @@ return {
 			"omnisharp",
 			-- "csharp_ls",
 			"zls",
-			"eslint",
-			"gopls",
 			"jdtls",
 			"pyright",
 			"rust_analyzer",
@@ -59,6 +57,8 @@ return {
 
 		mason_tool_installer.setup({
 			ensure_installed = {
+				"eslint",
+				"gopls",
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
 				"isort", -- python formatter
