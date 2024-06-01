@@ -51,5 +51,4 @@ gitsigns.setup({
 	yadm = {
 		enable = false,
 	},
-}
-)
+})
