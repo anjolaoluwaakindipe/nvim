@@ -165,27 +165,27 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					-- language servers
-					"tsserver",
+					-- "tsserver",
 					"html",
 					"cssls",
-					"tailwindcss",
+					-- "tailwindcss",
 					"lua_ls",
-					"emmet_ls",
-					"omnisharp",
+					-- "emmet_ls",
+					-- "omnisharp",
 					-- "csharp_ls",
-					"zls",
-					"eslint",
+					-- "zls",
+					-- "eslint",
 					-- "gopls",
-					"jdtls",
-					"pyright",
-					"rust_analyzer",
-					"svelte",
-					"prismals",
+					-- "jdtls",
+					-- "pyright",
+					-- "rust_analyzer",
+					-- "svelte",
+					-- "prismals",
 					"clangd",
 					"jsonls",
-					"cmake",
-					"templ",
-					"htmx",
+					-- "cmake",
+					-- "templ",
+					-- "htmx",
 				},
 				handlers = {
 					-- this first function is the "default handler"
@@ -206,13 +206,14 @@ return {
 			local mason_tool_installer = require("mason-tool-installer")
 			mason_tool_installer.setup({
 				ensure_installed = {
-					"eslint",
+					-- "eslint",
 					"prettier", -- prettier formatter
 					"stylua", -- lua formatter
 					"isort", -- python formatter
 					"black", -- python formatter
 					"pylint",
-					"eslint_d",
+					-- "eslint_d",
+          "clang-format"
 				},
 			})
 		end,
