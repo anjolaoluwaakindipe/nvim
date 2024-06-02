@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+-- lazy.nvim
+>>>>>>> e7d3f83 (Getting things for work)
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",

@@ -102,6 +102,9 @@ return {
 		dependencies = {
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "williamboman/mason-lspconfig.nvim" },
+			{
+				"WhoIsSethDaniel/mason-tool-installer.nvim",
+			},
 		},
 		config = function()
 			-- This is where all the LSP shenanigans will live
@@ -161,6 +164,7 @@ return {
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					-- language servers
 					"tsserver",
 					"html",
 					"cssls",
@@ -171,7 +175,7 @@ return {
 					-- "csharp_ls",
 					"zls",
 					"eslint",
-					"gopls",
+					-- "gopls",
 					"jdtls",
 					"pyright",
 					"rust_analyzer",
@@ -196,6 +200,19 @@ return {
 						local lua_opts = lsp_zero.nvim_lua_ls()
 						require("lspconfig").lua_ls.setup(lua_opts)
 					end,
+				},
+			})
+
+			local mason_tool_installer = require("mason-tool-installer")
+			mason_tool_installer.setup({
+				ensure_installed = {
+					"eslint",
+					"prettier", -- prettier formatter
+					"stylua", -- lua formatter
+					"isort", -- python formatter
+					"black", -- python formatter
+					"pylint",
+					"eslint_d",
 				},
 			})
 		end,
