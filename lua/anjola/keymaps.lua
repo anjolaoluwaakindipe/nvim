@@ -83,6 +83,7 @@ keymap("i", "<M-BS>", "<C-W>", opts)
 -- Plugins
 --NVIM TREE
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>ef", ":NvimTreeFocus<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts) -- find files within current working directory, respects .gitignore

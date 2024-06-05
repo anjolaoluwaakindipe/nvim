@@ -107,6 +107,9 @@ return {
 			},
 			{ "nvimdev/lspsaga.nvim" },
 		},
+		opts = {
+			autoformat = false,
+		},
 		config = function()
 			-- This is where all the LSP shenanigans will live
 			local lsp_zero = require("lsp-zero")
@@ -154,6 +157,9 @@ return {
 
 				opts.desc = "format file"
 				keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+
+				opts.desc = "format selection"
+				keymap.set("v", "<leader>ls", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
