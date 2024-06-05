@@ -1,7 +1,9 @@
 return {
 	"nvim-tree/nvim-tree.lua",
-	dependencies = "nvim-tree/nvim-web-devicons",
+	dependencies = { "nvim-tree/nvim-web-devicons", "antosha417/nvim-lsp-file-operations" },
+	lazy = false,
 	config = function()
+		require("lsp-file-operations").setup()
 		-- disable netrw at the very start of your init.lua
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
@@ -21,10 +23,11 @@ return {
 		nvim_tree.setup({
 			update_focused_file = {
 				enable = true,
-				update_cwd = true,
+				-- 	update_cwd = true,
 			},
 			actions = {
 				open_file = {
+
 					window_picker = {
 						enable = false,
 					},
