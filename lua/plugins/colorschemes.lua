@@ -4,7 +4,7 @@ return {
 	{
 		"folke/tokyonight.nvim",
 		opts = { style = "moon" },
-	  -- priority = 1000,
+	  priority = 1000,
     -- config = function ()
     --   local transparent = true -- set to true if you would like to enable transparency
     --   local bg = "#011628"

@@ -2,9 +2,10 @@ local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
 
+
+
 -- Shorten function name
 local keymap = vim.keymap.set
-
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -19,6 +20,19 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+--
+-- yanks
+-- keymap("n", "<leader>y", "\"+y", opts)
+-- keymap("v", "<leader>y", "\"+y", opts)
+-- keymap("n", "<leader>Y", "\"+yg_", opts)
+-- keymap("n", "<leader>yy", "\"+yy", opts)
+--
+-- -- pastes
+-- keymap("n", "<leader>p", "\"+p", opts)
+-- keymap("v", "<leader>p", "\"+p", opts)
+-- keymap("n", "<leader>P", "\"+P", opts)
+-- keymap("v", "<leader>P", "\"+P", opts)
+
 
 -- clear search highlights
 keymap("n", "<leader>nh", ":nohl<CR>", opts)
