@@ -1,5 +1,5 @@
+vim.api.nvim_set_option_value("clipboard", "unnamedplus", {})
 require("anjola.keymaps")
-
 -- require("anjola.plugins")
 -- require("anjola.nvim-tree")
 require("anjola.options")
