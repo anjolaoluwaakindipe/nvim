@@ -25,6 +25,7 @@ return {
 		local conform = require("conform")
 
 		conform.setup({
+      log_level = vim.log.levels.DEBUG,
 			formatters_by_ft = {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
@@ -41,6 +42,7 @@ return {
 				lua = { "stylua" },
 				cpp = { "clang-format" },
 				python = { "isort", "black" },
+        cs = {"csharpier"}
 			},
 			format_on_save = function(bufnr)
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -54,12 +56,20 @@ return {
 			end,
 		})
 
-		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-			conform.format({
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 1000,
-			})
-		end, { desc = "Format file or range (in visual mode)" })
+    vim.keymap.set({ "n" }, "<leader>lf", function()
+      conform.format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+      })
+    end, { desc = "Format file or range (in visual mode)" })
+
+    vim.keymap.set({ "v" }, "<leader>ls", function()
+      conform.format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+      })
+    end, { desc = "Format selection visual selection" })
 	end,
 }

@@ -113,7 +113,11 @@ return {
 		config = function()
 			-- This is where all the LSP shenanigans will live
 			local lsp_zero = require("lsp-zero")
-			require("lspsaga").setup({})
+			require("lspsaga").setup({
+        lightbulb = {
+          virtual_text = false
+        }
+      })
 			lsp_zero.extend_lspconfig()
 
 			--- if you want to know more about lsp-zero and mason.nvim
@@ -141,13 +145,13 @@ return {
 				keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 				opts.desc = "Show LSP definitions"
-				keymap.set("n", "<leader>gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+				keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts) -- show lsp definitions
 
 				opts.desc = "Show LSP implementations"
-				keymap.set("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+				keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- show lsp implementations
 
 				opts.desc = "Show LSP type definitions"
-				keymap.set("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+				keymap.set("n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts) -- show lsp type definitions
 
 				opts.desc = "View Signature"
 				keymap.set("n", "<leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
@@ -156,10 +160,10 @@ return {
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "format file"
-				keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+				keymap.set("n", "<leader>vf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 				opts.desc = "format selection"
-				keymap.set("v", "<leader>ls", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+				keymap.set("v", "<leader>vs", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
@@ -197,9 +201,9 @@ return {
 					-- "emmet_ls",
 					-- "omnisharp",
 					-- "csharp_ls",
-					-- "zls",
+					"zls",
 					-- "eslint",
-					-- "gopls",
+					"gopls",
 					-- "jdtls",
 					-- "pyright",
 					-- "rust_analyzer",
