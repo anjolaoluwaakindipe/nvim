@@ -18,7 +18,7 @@ return {
     --   local border = "#547998"
     --
     --   require("tokyonight").setup({
-    --     style = "night",
+    --     style = "storm",
     --     transparent = transparent,
     --     styles = {
     --       sidebars = transparent and "transparent" or "dark",
@@ -43,7 +43,7 @@ return {
     --     end,
     --   })
     --
-    --   vim.cmd("colorscheme tokyonight")
+    --   vim.cmd("colorscheme tokyonight-storm")
     -- end
 	},
 

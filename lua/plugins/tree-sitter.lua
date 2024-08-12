@@ -1,8 +1,11 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+  dependencies = {
+    {"nvim-treesitter/nvim-treesitter-context"}
+  },
 	config = function()
- local treesitter = require("nvim-treesitter.configs")
+    local treesitter = require("nvim-treesitter.configs")
 
     -- configure treesitter
     treesitter.setup({ -- enable syntax highlighting
@@ -53,5 +56,10 @@ return {
         },
       },
     })
+    vim.keymap.set("n", "[c", function()
+      require("treesitter-context").go_to_context(vim.v.count1)
+    end, { silent = true })
+    vim.cmd("hi TreesitterContextBottom gui=underline guisp=Grey")
+    vim.cmd("hi TreesitterContextLineNumberBottom gui=underline guisp=Grey")
   end,
 }

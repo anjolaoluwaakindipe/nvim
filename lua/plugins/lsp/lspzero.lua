@@ -113,7 +113,14 @@ return {
 		config = function()
 			-- This is where all the LSP shenanigans will live
 			local lsp_zero = require("lsp-zero")
-			require("lspsaga").setup({})
+      require("lspsaga").setup({
+        symbols_in_winbar = {
+          enable = true
+        },
+        outline = {
+          layout = 'float'
+        }
+      })
 			lsp_zero.extend_lspconfig()
 
 			--- if you want to know more about lsp-zero and mason.nvim
@@ -125,10 +132,12 @@ return {
 				local opts = { buffer = bufnr, silent = true, desc = "" }
 				local keymap = vim.keymap
 
-				opts.desc = "Show LSP references"
-				keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
-				opts.desc = "Jump to LSP references"
+				opts.desc = "Show LSP references with Telescope"
+				keymap.set("n", "<leader>grt", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+				opts.desc = "Jump to LSP references normal"
 				keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+				opts.desc = "Jump to LSP references with Lspsaga"
+				keymap.set("n", "<leader>grs", "<cmd>:Lspsaga finder tyd+ref+imp+def<CR>", opts)
 				-- show definition, references
 
 				opts.desc = "Peek definition and make edits in window"

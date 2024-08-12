@@ -4,6 +4,9 @@ return {
 	event = "VeryLazy",
 	opts = {
 		-- add any options here
+    popupmenu = {
+      false
+    },
 		routes = {
 			{
 				filter = {

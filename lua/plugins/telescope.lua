@@ -57,5 +57,12 @@ return {
 		keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 		keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "TelescopePickerClose",
+      callback = function(args)
+        on_choice(nil, nil)
+      end,
+      once = true,
+    })
 	end,
 }

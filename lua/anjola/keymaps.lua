@@ -123,10 +123,10 @@ keymap("n", "<leader>mn", ':lua require("neotest").jump.next() <CR>', opts) -- n
 keymap("n", "<leader>mp", ':lua require("neotest").jump.prev() <CR>', opts) -- neotest jump to previous test
 
 -- DAP
-keymap("n", "<leader>dt", ":lua require('dapui').toggle() <CR>", opts) -- DAP toggle UI
-keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", opts) -- DAP toggle breakpoint
-keymap("n", "<leader>dc", ":DapContinue<CR>", opts) -- DAP Continue
-keymap("n", "<leader>dr", ":lua require('dapui').open({reset=true})<CR>", opts) -- DAP toggle breakpoint
+-- keymap("n", "<leader>dt", ":lua require('dapui').toggle() <CR>", opts) -- DAP toggle UI
+-- keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", opts) -- DAP toggle breakpoint
+-- keymap("n", "<leader>dc", ":DapContinue<CR>", opts) -- DAP Continue
+-- keymap("n", "<leader>dr", ":lua require('dapui').open({reset=true})<CR>", opts) -- DAP toggle breakpoint
 
 -- Terminal --
 -- Better terminal navigation
