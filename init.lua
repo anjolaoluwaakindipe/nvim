@@ -1,4 +1,18 @@
-vim.api.nvim_set_option_value("clipboard", "unnamedplus", {})
+-- Function to synchronize the system and primary clipboards
+local function sync_clipboards()
+    local current_reg = vim.fn.getreg('"')
+    local current_regtype = vim.fn.getregtype('"')
+    vim.fn.setreg('*', current_reg, current_regtype)
+    vim.fn.setreg('+', current_reg, current_regtype)
+end
+
+-- Automatic clipboard synchronization on every yank operation
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        sync_clipboards()
+    end
+})
+
 require("anjola.keymaps")
 -- require("anjola.plugins")
 -- require("anjola.nvim-tree")
@@ -22,7 +36,6 @@ require("anjola.options")
 -- require("anjola.surround")
 -- require("anjola.harpoon")
 -- require("anjola.rust_tools")
-
 -- vim.cmd("let g:OmniSharp_server_use_net6 = 1 ")
 -- vim.cmd("let g:OmniSharp_server_use_mono = 1")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

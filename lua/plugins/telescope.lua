@@ -4,6 +4,8 @@ return {
 	-- or                              , branch = '0.1.x',
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"radyz/telescope-gitsigns",
+		"lewis6991/gitsigns.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
@@ -14,6 +16,7 @@ return {
 			version = "^1.0.0",
 		},
 		{ "folke/trouble.nvim" },
+		{ "nvim-telescope/telescope-ui-select.nvim" },
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -42,11 +45,20 @@ return {
 					},
 				},
 			},
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown({
+						-- even more opts
+					}),
+				},
+			},
 		})
 
-		telescope.load_extension("fzf")
 		-- then load the extension
+		telescope.load_extension("fzf")
 		telescope.load_extension("live_grep_args")
+		telescope.load_extension("git_signs")
+		telescope.load_extension("ui-select")
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
@@ -57,12 +69,12 @@ return {
 		keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 		keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "TelescopePickerClose",
-      callback = function(args)
-        on_choice(nil, nil)
-      end,
-      once = true,
-    })
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "TelescopePickerClose",
+			callback = function(args)
+				on_choice(nil, nil)
+			end,
+			once = true,
+		})
 	end,
 }

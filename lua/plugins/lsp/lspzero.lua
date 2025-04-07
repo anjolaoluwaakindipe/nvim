@@ -39,7 +39,7 @@ return {
 				local col = vim.fn.col(".") - 1
 				return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 			end
-
+    
 			cmp.setup({
 				formatting = lsp_zero.cmp_format({ details = true }),
 				mapping = cmp.mapping.preset.insert({
@@ -106,6 +106,7 @@ return {
 				"WhoIsSethDaniel/mason-tool-installer.nvim",
 			},
 			{ "nvimdev/lspsaga.nvim" },
+			{ "stevearc/conform.nvim" },
 		},
 		opts = {
 			autoformat = false,
@@ -113,14 +114,14 @@ return {
 		config = function()
 			-- This is where all the LSP shenanigans will live
 			local lsp_zero = require("lsp-zero")
-      require("lspsaga").setup({
-        symbols_in_winbar = {
-          enable = true
-        },
-        outline = {
-          layout = 'float'
-        }
-      })
+			require("lspsaga").setup({
+				symbols_in_winbar = {
+					enable = true,
+				},
+				outline = {
+					layout = "float",
+				},
+			})
 			lsp_zero.extend_lspconfig()
 
 			--- if you want to know more about lsp-zero and mason.nvim
@@ -165,10 +166,10 @@ return {
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "format file"
-				keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+				keymap.set("n", "<leader>vf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 				opts.desc = "format selection"
-				keymap.set("v", "<leader>ls", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+				keymap.set("v", "<leader>vs", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
@@ -216,6 +217,7 @@ return {
 					-- "prismals",
 					"clangd",
 					"jsonls",
+          "bashls"
 					-- "cmake",
 					-- "templ",
 					-- "htmx",
@@ -244,7 +246,7 @@ return {
 					"stylua", -- lua formatter
 					"isort", -- python formatter
 					"black", -- python formatter
-					"pylint",
+					-- "pylint",
 					-- "eslint_d",
 					"clang-format",
 				},

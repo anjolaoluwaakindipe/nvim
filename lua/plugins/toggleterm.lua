@@ -12,7 +12,7 @@ local M = {
 		shade_terminals = true,
 		shading_factor = 2, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
 		start_in_insert = true,
-		insert_mappings = true, -- whether or not the open mapping applies in insert mode
+		insert_mappings = false, -- whether or not the open mapping applies in insert mode
 		persist_size = false,
 		-- direction = 'vertical' | 'horizontal' | 'window' | 'float',
 		direction = "horizontal",
@@ -26,7 +26,7 @@ local M = {
 			-- not natively supported but implemented in this plugin.
 			-- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
 			border = "curved",
-			-- width = <value>,
+			-- Width = <value>,
 			-- height = <value>,
 			winblend = 0,
 			highlights = {
